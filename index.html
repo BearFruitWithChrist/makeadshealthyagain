@@ -123,21 +123,53 @@ nav.apple-nav ul a:hover { opacity: 1; text-decoration: none; color: var(--ink);
   margin: 0 auto;
 }
 .hero-apple .eyebrow {
-  font-size: 13px;
+  font-size: clamp(15px, 1.3vw, 18px);
   color: var(--gold);
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .hero-apple .eyebrow::before,
 .hero-apple .eyebrow::after {
   content: '';
-  width: 18px; height: 1px;
+  width: 26px; height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-apple .appt-row {
+  margin: 36px auto 0;
+  text-align: center;
+}
+.hero-apple .appt-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.hero-apple .appt-email {
+  display: block;
+  margin-top: 14px;
+  color: var(--link);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.hero-apple .appt-email:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+@media (max-width: 520px) {
+  .hero-apple .appt-eyebrow {
+    white-space: normal;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 95%;
+  }
+  .hero-apple .appt-email { font-size: 15px; }
 }
 .hero-apple h1 {
   font-family: 'Inter Tight', sans-serif;
@@ -161,11 +193,11 @@ nav.apple-nav ul a:hover { opacity: 1; text-decoration: none; color: var(--ink);
   margin-right: auto;
 }
 .hero-apple .subhead .king {
-  font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
+  font-family: 'Inter Tight', sans-serif;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-deep) 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -351,10 +383,12 @@ section.tile.gradient {
 }
 .num-tile.gold-stat .num-eyebrow { color: var(--gold); }
 .num-tile .num-eyebrow {
-  font-size: 13px;
+  font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 600;
   color: var(--link);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .num-tile.dark .num-eyebrow { color: #6da9ff; }
 .num-tile .big-fig {
@@ -381,7 +415,7 @@ section.tile.gradient {
 
 /* Press strip — minimal */
 .press-strip-apple {
-  padding: 40px 22px;
+  padding: 56px 22px;
   text-align: center;
   background: var(--white);
   border-top: 1px solid rgba(0,0,0,0.06);
@@ -389,21 +423,66 @@ section.tile.gradient {
   margin: 32px 0 0;
 }
 .press-strip-apple .lbl {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--gray);
-  margin-bottom: 16px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 28px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .press-strip-apple .names {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 28px;
+  gap: 18px 36px;
   font-family: 'Inter Tight', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.15;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+}
+.press-strip-apple .press-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+.press-photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--light);
+  border-radius: 22px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+}
+.press-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.78) 100%);
+  pointer-events: none;
+}
+.press-photo .caption {
+  position: absolute;
+  bottom: 22px;
+  left: 24px;
+  right: 24px;
+  color: var(--white);
+  z-index: 2;
+}
+.press-photo .caption .name-line {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+@media (max-width: 760px) {
+  .press-strip-apple .press-photos { grid-template-columns: 1fr; gap: 14px; }
+  .press-photo { aspect-ratio: 4 / 3; }
 }
 
 /* Work grid — Apple-style card system */
@@ -766,11 +845,11 @@ section.tile.gradient {
   padding: 80px 22px 56px;
 }
 .highlights-head .eyebrow {
-  font-size: 13px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: var(--gold);
-  margin-bottom: 12px;
-  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .highlights-head h2 {
@@ -822,9 +901,9 @@ section.tile.gradient {
   pointer-events: none;
 }
 .highlight-tile .h-label {
-  font-size: 12px;
+  font-size: clamp(14px, 1.1vw, 16px);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 14px;
@@ -933,11 +1012,11 @@ section.tile.gradient {
   padding: 80px 22px 56px;
 }
 .room-apple-head .eyebrow {
-  font-size: 13px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: var(--gold);
-  margin-bottom: 12px;
-  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .room-apple-head h2 {
@@ -1001,16 +1080,19 @@ section.tile.gradient {
 .photo-tile .caption .name-line {
   font-family: 'Inter Tight', sans-serif;
   font-weight: 700;
-  font-size: clamp(18px, 2.2vw, 28px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 4px;
+  font-size: clamp(26px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 6px;
 }
-.photo-tile.span2 .caption .name-line { font-size: clamp(24px, 3vw, 36px); }
+.photo-tile.span2 .caption .name-line { font-size: clamp(36px, 4.6vw, 64px); }
 .photo-tile .caption .context-line {
-  font-size: 13px;
-  opacity: 0.85;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.9;
+  letter-spacing: 0;
 }
+.photo-tile.span2 .caption .context-line { font-size: 17px; }
 .photo-tile .gold-flag {
   position: absolute;
   top: 18px; left: 18px;
@@ -1063,10 +1145,12 @@ section.tile.gradient {
   text-align: center;
 }
 .studio-block .eyebrow {
-  font-size: 13px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: var(--link);
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .studio-block h2 {
   font-family: 'Inter Tight', sans-serif;
@@ -1111,10 +1195,12 @@ section.tile.gradient {
   padding: 80px 22px 56px;
 }
 .svc-head-apple .eyebrow {
-  font-size: 13px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: var(--link);
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .svc-head-apple h2 {
   font-family: 'Inter Tight', sans-serif;
@@ -1176,10 +1262,12 @@ section.tile.gradient {
   margin: 32px 0 0;
 }
 .contact-apple .eyebrow {
-  font-size: 13px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 600;
   color: var(--link);
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .contact-apple h2 {
   font-family: 'Inter Tight', sans-serif;
@@ -1247,7 +1335,6 @@ footer.foot-apple .row {
     <span class="brand">Make Ads Healthy Again<sup style="font-size: 0.7em; opacity: 0.65; margin-left: 3px;">LLC</sup></span>
     <ul>
       <li><a href="#work">Work</a></li>
-      <li><a href="#room">Room</a></li>
       <li><a href="#numbers">Portfolio</a></li>
       <li><a href="#about">Studio</a></li>
       <li><a href="#services">Services</a></li>
@@ -1263,7 +1350,10 @@ footer.foot-apple .row {
   <p class="lede-apple">A studio that consistently produces creative content that performs.</p>
   <div class="cta-pair">
     <a href="#work" class="btn-blue">See the work</a>
-    <a href="#contact" class="link-arrow">Get in touch ›</a>
+  </div>
+  <div class="appt-row">
+    <span class="eyebrow appt-eyebrow">By appointment · Washington, DC</span>
+    <a href="mailto:booking@makeadshealthyagain.com" class="appt-email">booking@makeadshealthyagain.com</a>
   </div>
 </section>
 
@@ -1273,14 +1363,26 @@ footer.foot-apple .row {
   <div class="names">
     <span>RFK Jr.</span>
     <span>Dr. Oz</span>
-    <span>MAHA Action</span>
-    <span>Vani Hari</span>
-    <span>Last Week Tonight with John Oliver</span>
-    <span>The New York Times</span>
-    <span>The White House</span>
     <span>Tony Robbins</span>
     <span>Tucker Carlson</span>
     <span>Dr. Andrew Huberman</span>
+    <span>The New York Times</span>
+    <span>The White House</span>
+    <span>Last Week Tonight with John Oliver</span>
+    <span>Vani Hari</span>
+    <span>MAHA Action</span>
+  </div>
+
+  <div class="press-photos">
+    <div class="press-photo" style="background-image: url('photos/rfk-flags-cropped.jpg');">
+      <div class="caption"><div class="name-line">RFK Jr.</div></div>
+    </div>
+    <div class="press-photo" style="background-image: url('photos/dr-oz-cms-office-cropped.jpg');">
+      <div class="caption"><div class="name-line">Dr. Oz</div></div>
+    </div>
+    <div class="press-photo" style="background-image: url('photos/tony-robbins-cropped.jpg');">
+      <div class="caption"><div class="name-line">Tony Robbins</div></div>
+    </div>
   </div>
 </div>
 
@@ -1463,7 +1565,7 @@ footer.foot-apple .row {
 <!-- About / Studio block -->
 <section class="studio-block" id="about">
   <div class="eyebrow">About</div>
-  <h2 class="tight tighter">Make Ads Healthy <span class="gray-subtle">Again LLC.</span></h2>
+  <h2 class="tight tighter">Make Ads Healthy <span class="gray-subtle">Again.</span></h2>
   <div class="body-apple">
     <p>The line between political advertising and the rest of culture has collapsed. This content firm was founded on that observation.</p>
     <p>From the RFK Jr. presidential campaign, to the MAHA Alliance super PAC, to building and launching MAHA Action, to creating a web series with Dr. Oz &mdash; we love to create great content.</p>
@@ -1472,52 +1574,6 @@ footer.foot-apple .row {
   </div>
 </section>
 
-<!-- In the Room — photo gallery -->
-<section class="room-apple" id="room">
-  <div class="room-apple-head">
-    <div class="eyebrow">Stills</div>
-    <h2 class="tight tighter">In the room.</h2>
-  </div>
-
-  <div class="room-apple-grid">
-    <!-- Featured large: MAHA Inaugural Ball with RFK Jr. + Cheryl Hines -->
-    <div class="photo-tile span2" style="background-image: url('photos/maha-ball-rfk-cheryl.jpg');">
-      <span class="gold-flag">MAHA Inaugural Ball</span>
-      <div class="caption">
-        <div class="name-line">RFK Jr. and Cheryl Hines</div>
-        <div class="context-line">Washington, DC</div>
-      </div>
-    </div>
-
-    <div class="photo-tile tall" style="background-image: url('photos/dr-oz-cms-office.jpg');">
-      <div class="caption">
-        <div class="name-line">Dr. Mehmet Oz</div>
-        <div class="context-line">CMS</div>
-      </div>
-    </div>
-
-    <div class="photo-tile tall" style="background-image: url('photos/rfk-flags.jpg');">
-      <div class="caption">
-        <div class="name-line">Robert F. Kennedy Jr.</div>
-        <div class="context-line"></div>
-      </div>
-    </div>
-
-    <div class="photo-tile tall" style="background-image: url('photos/dr-oz-maha-truck.jpg');">
-      <div class="caption">
-        <div class="name-line">Dr. Oz</div>
-        <div class="context-line">Capitol Hill</div>
-      </div>
-    </div>
-
-    <div class="photo-tile tall" style="background-image: url('photos/tony-robbins.jpg');">
-      <div class="caption">
-        <div class="name-line">Tony Robbins</div>
-        <div class="context-line">On set</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Services -->
 <section class="services-apple" id="services">
