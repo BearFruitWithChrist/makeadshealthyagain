@@ -164,12 +164,14 @@ nav.apple-nav ul a:hover { opacity: 1; text-decoration: none; color: var(--ink);
 }
 @media (max-width: 520px) {
   .hero-apple .appt-eyebrow {
-    white-space: normal;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 95%;
+    font-size: 11px;
+    letter-spacing: 0.06em;
   }
-  .hero-apple .appt-email { font-size: 15px; }
+  .hero-apple .appt-eyebrow::before,
+  .hero-apple .appt-eyebrow::after {
+    width: 16px;
+  }
+  .hero-apple .appt-email { font-size: 14px; }
 }
 .hero-apple h1 {
   font-family: 'Inter Tight', sans-serif;
